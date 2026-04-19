@@ -19,11 +19,12 @@ const companies = [
     name: "MOA",
     logo: "/moe.webp?height=120&width=120",
   },
-  {
+   {
     id: 4,
-    name: "Freelance",
-    logo: "/Upwork-Symbol.png?height=120&width=120",
+    name: "ECWC",
+    logo: "/flogo.png?height=120&width=120",
   },
+ 
 ]
 
 export function CompaniesSection() {

@@ -1,4 +1,5 @@
 "use client"
+
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -6,104 +7,91 @@ import { Card, CardContent } from "@/components/ui/card"
 import { BarChart4, Braces, Brain, Cpu } from "lucide-react"
 import Image from "next/image"
 
+/* ================= SKILL CATEGORIES ================= */
+
 const skillCategories = [
   {
-    id: "data-analysis",
-    name: "Data Analysis",
+    id: "fullstack",
+    name: "Full Stack Development",
+    icon: <Braces className="h-5 w-5" />,
+    skills: [
+      { name: "Next.js", level: 90 },
+      { name: "React", level: 90 },
+      { name: "Node.js", level: 85 },
+      { name: "Express.js", level: 80 },
+      { name: "NestJS", level: 75 },
+      { name: "FastAPI", level: 90 },
+    ],
+  },
+  {
+    id: "backend",
+    name: "Backend & Databases",
+    icon: <Cpu className="h-5 w-5" />,
+    skills: [
+      { name: "PostgreSQL", level: 90 },
+      { name: "MySQL", level: 85 },
+      { name: "SQL", level: 90 },
+      { name: "Supabase", level: 80 },
+      { name: "Firebase", level: 75 },
+      { name: "API Integration", level: 85 },
+    ],
+  },
+  {
+    id: "data",
+    name: "Data Analysis & BI",
     icon: <BarChart4 className="h-5 w-5" />,
     skills: [
-      { name: "Excel", level: 95 },
-      { name: "SQL", level: 90 },
-      { name: "Power BI", level: 85 },
+      { name: "Excel", level: 90 },
+      { name: "SQL Analytics", level: 85 },
+      { name: "Power BI", level: 80 },
       { name: "Tableau", level: 80 },
+      { name: "Pandas", level: 85 },
+      { name: "NumPy", level: 80 },
       { name: "Data Cleaning", level: 90 },
     ],
   },
   {
-    id: "programming",
-    name: "Programming",
-    icon: <Braces className="h-5 w-5" />,
-    skills: [
-      { name: "Python", level: 85 },
-      { name: "R", level: 35 },
-      { name: "JavaScript", level: 65 },
-      { name: "Pandas", level: 90 },
-      { name: "NumPy", level: 85 },
-    ],
-  },
-  {
-    id: "machine-learning",
-    name: "Machine Learning",
+    id: "ai",
+    name: "AI & Automation",
     icon: <Brain className="h-5 w-5" />,
     skills: [
-      { name: "Scikit-learn", level: 40 },
-      { name: "TensorFlow", level: 40 },
-      { name: "PyTorch", level: 50 },
-      { name: "Regression", level: 45 },
-      { name: "Classification", level: 40 },
-    ],
-  },
-  {
-    id: "ai",
-    name: "AI",
-    icon: <Cpu className="h-5 w-5" />,
-    skills: [
-      { name: "Neural Networks", level: 25 },
-      { name: "NLP", level: 20 },
-      { name: "Computer Vision", level: 25 },
-      { name: "Reinforcement Learning", level: 20 },
-      { name: "LLMs", level: 20 },
+      { name: "RAG Systems", level: 60 },
+      { name: "Hugging Face", level: 60 },
+      { name: "n8n Automation", level: 70 },
     ],
   },
 ]
-const techIcons = [
 
+/* ================= TECH ICONS ================= */
+
+const techIcons = [
+  { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg", color: "#000" },
   { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", color: "#61DAFB" },
   { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", color: "#339933" },
+  // { name: "Express", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg", color: "#000" },
+ 
+ 
+ 
+ 
+  // { name: "NestJS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg", color: "#E0234E" },
+  { name: "FastAPI", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg", color: "#009688" },
   { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", color: "#3776AB" },
-
-  { name: "SQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", color: "#4479A1" },
-  
   { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg", color: "#336791" },
- 
-  { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg", color: "#F05032" },
-  { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", color: "#336791" },
- 
-  { name: "Tableau", icon: "https://img.icons8.com/color/100/tableau-software.png", color: "#E97627" },
+  { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", color: "#4479A1" },
+  // { name: "Supabase", icon: "https://seeklogo.com/images/S/supabase-logo-DCC676FFE2-seeklogo.com.png", color: "#3ECF8E" },
+  { name: "Firebase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg", color: "#FFCA28" },
+  { name: "n8n", icon: "https://avatars.githubusercontent.com/u/45487711?s=200&v=4", color: "#EA4B71" },
+  { name: "HuggingFace", icon: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg", color: "#FFD21E" },
+  { name: "Linux", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg", color: "#FCC624" },
+  { name: "VPS", icon: "https://img.icons8.com/color/96/server.png", color: "#4F46E5" },
+  { name: "QGIS", icon: "https://upload.wikimedia.org/wikipedia/commons/7/77/Qgis-icon-3.0.png", color: "#589632" },
   { name: "Excel", icon: "https://img.icons8.com/fluency/100/microsoft-excel-2019.png", color: "#217346" },
-  { name: "Numpy", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg", color: "#013243" },
-  { name: "Pandas", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg", color: "#150458" },
   { name: "Power BI", icon: "https://img.icons8.com/color/100/power-bi.png", color: "#F2C811" },
+  { name: "Tableau", icon: "https://img.icons8.com/color/100/tableau-software.png", color: "#E97627" },
+]
 
-];
+/* ================= SKILL BAR ================= */
 
-export default function Skills() {
-  return (
-    <section id="skills" className="py-16 bg-gray-100">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Skills</h2>
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6">
-          {techIcons.map((skill, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-              style={{ backgroundColor: `${skill.color}10` }}
-            >
-              <img
-                src={skill.icon}
-                alt={`${skill.name} logo`}
-                className="w-12 h-12 md:w-16 md:h-16 mb-2 object-contain"
-              />
-              <h4 className="text-sm md:text-base font-medium text-gray-700">{skill.name}</h4>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// Animated skill bar component
 function SkillBar({ name, level, index }: { name: string; level: number; index: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
@@ -112,21 +100,22 @@ function SkillBar({ name, level, index }: { name: string; level: number; index: 
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
-      <Card className="overflow-hidden border-none bg-gradient-to-r from-background to-muted/50 hover:shadow-lg transition-all duration-300">
-        <CardContent className="p-6">
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="font-semibold text-lg">{name}</h3>
-            <span className="text-sm font-bold text-amber-500">{level}%</span>
+      <Card className="hover:shadow-lg transition">
+        <CardContent className="p-5">
+          <div className="flex justify-between mb-2">
+            <span className="font-medium">{name}</span>
+            <span className="text-amber-500 font-semibold">{level}%</span>
           </div>
-          <div className="w-full bg-muted rounded-full h-3">
+
+          <div className="w-full bg-muted h-2 rounded-full">
             <motion.div
-              className="h-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-300"
+              className="h-2 bg-gradient-to-r from-amber-500 to-amber-300 rounded-full"
               initial={{ width: 0 }}
-              animate={isInView ? { width: `${level}%` } : { width: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
+              animate={isInView ? { width: `${level}%` } : {}}
+              transition={{ duration: 1 }}
             />
           </div>
         </CardContent>
@@ -135,99 +124,87 @@ function SkillBar({ name, level, index }: { name: string; level: number; index: 
   )
 }
 
-// Animated tech icon component
-function TechIcon({ name, icon, color, index }: { name: string; icon: string; color: string; index: number }) {
+/* ================= TECH ICON ================= */
+
+function TechIcon({ name, icon, color, index }: any) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.05,
-        type: "spring",
-        stiffness: 100,
-      }}
-      whileHover={{
-        scale: 1.1,
-        rotate: [0, -5, 5, -5, 0],
-        transition: { duration: 0.5 },
-      }}
+      initial={{ opacity: 0, scale: 0.6 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ delay: index * 0.05 }}
+      whileHover={{ scale: 1.1 }}
       className="flex flex-col items-center"
     >
       <div
-        className="relative w-16 h-16 md:w-20 md:h-20 mb-2 rounded-lg overflow-hidden flex items-center justify-center"
+        className="w-16 h-16 rounded-lg flex items-center justify-center mb-2"
         style={{ backgroundColor: `${color}20` }}
       >
-        <div className="absolute inset-0 opacity-20" style={{ backgroundColor: color }}></div>
-        <Image src={icon || "/placeholder.svg"} alt={name} width={50} height={50} className="z-10" />
+        <Image src={icon} alt={name} width={40} height={40} />
       </div>
+
       <span className="text-sm font-medium">{name}</span>
     </motion.div>
   )
 }
 
-export function SkillsShowcase() {
+/* ================= MAIN COMPONENT ================= */
+
+export default function SkillsShowcase() {
   return (
-    <section className="container py-16">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="text-center mb-16"
-      >
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Skills</h2>
+    <section className="container py-16" id="skills">
+
+      <div className="text-center mb-16">
+        <h2 className="text-4xl font-bold mb-4">Technical Skills</h2>
         <div className="h-1 w-20 bg-amber-500 mx-auto mb-6"></div>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          From data analysis to advanced machine learning, I've developed a diverse set of skills throughout my journey.
+          Full-stack development with strong backend systems, data analysis experience,
+          and growing expertise in AI automation.
         </p>
-      </motion.div>
+      </div>
 
-      <Tabs defaultValue="data-analysis" className="w-full">
-        <TabsList className="grid grid-cols-2 md:grid-cols-4 mb-8 bg-gradient-to-r from-background to-muted/50 p-1 rounded-lg">
+      <Tabs defaultValue="fullstack">
+
+        <TabsList className="grid grid-cols-2 md:grid-cols-4 mb-10">
           {skillCategories.map((category) => (
-            <TabsTrigger
-              key={category.id}
-              value={category.id}
-              className="flex items-center gap-2 data-[state=active]:bg-amber-500 data-[state=active]:text-black"
-            >
+            <TabsTrigger key={category.id} value={category.id}>
               {category.icon}
-              <span className="hidden md:inline">{category.name}</span>
+              <span className="ml-2 hidden md:inline">{category.name}</span>
             </TabsTrigger>
           ))}
         </TabsList>
 
         {skillCategories.map((category) => (
           <TabsContent key={category.id} value={category.id}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {category.skills.map((skill, index) => (
-                <SkillBar key={skill.name} name={skill.name} level={skill.level} index={index} />
+                <SkillBar key={skill.name} {...skill} index={index} />
               ))}
             </div>
           </TabsContent>
         ))}
+
       </Tabs>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="mt-24 text-center"
-      >
-        <h3 className="text-2xl font-bold mb-4">Tools & Technologies</h3>
+      <div className="mt-24 text-center">
+
+        <h3 className="text-2xl font-bold mb-4">
+          Tools & Technologies
+        </h3>
+
         <div className="h-1 w-16 bg-amber-500 mx-auto mb-12"></div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6 justify-center">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
           {techIcons.map((tech, index) => (
-            <TechIcon key={tech.name} name={tech.name} icon={tech.icon} color={tech.color} index={index} />
+            <TechIcon key={tech.name} {...tech} index={index} />
           ))}
         </div>
-      </motion.div>
+
+      </div>
+
     </section>
   )
 }

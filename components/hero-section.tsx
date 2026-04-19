@@ -19,20 +19,22 @@ import {
   Linkedin,
   Mail,
   Twitter,
+  Workflow,
+  Bot,
+  Cpu,
 } from "lucide-react"
 
 // Code snippet for the animated terminal
 const codeSnippet = `
 developer = {
     'name': 'Remedan Hyeredin',
-    'role': 'Data Scientist & Analyst',
-    'experience': '2+ years'
+    'role': 'Software Developer',
+    'expertise': ['Fast API', 'Next.js', 'NestJS', 'n8n'],
+    'focus': 'AI-powered systems '
 }
 
-print(f"{developer['name']} — {developer['role']} with {developer['experience']} of experience.")
-
-
-
+# Creating different systems powered by AI
+# Building intelligent automation solutions
 `.trim();
 
 export function HeroSection() {
@@ -43,7 +45,7 @@ export function HeroSection() {
   const [typedText, setTypedText] = useState("")
   const [currentLine, setCurrentLine] = useState(0)
 
-  const skills = ["Web Developer", "Data Analyst", "ML Engineer", "GIS Specialist"]
+  const skills = ["Full Stack Engineer", "Software Developer", "AI Agent Builder", "n8n Expert"]
   const codeLines = codeSnippet.split("\n")
 
   // Parallax effect
@@ -64,9 +66,8 @@ export function HeroSection() {
       }, 100)
       return () => clearTimeout(timer)
     } else {
-      // Add the final console output with a delay
       const timer = setTimeout(() => {
-        setTypedText((prev) => prev + "\n> Building amazing digital experiences")
+        setTypedText((prev) => prev + "\n> Building intelligent automation solutions")
       }, 500)
       return () => clearTimeout(timer)
     }
@@ -159,19 +160,17 @@ export function HeroSection() {
             <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-amber-500 to-transparent opacity-70"></div>
             <div className="pl-4">
               <p className="text-lg md:text-xl leading-relaxed">
-                <span className="font-semibold text-amber-500">Data scientist</span> with over{" "}
-                <span className="font-bold bg-amber-500/10 px-2 py-0.5 rounded-md">2+ years</span> of experience driving business impact through
-                 <span className="italic">  Advanced Analytics, and Compelling Storytelling</span>.
-                
-
+                <span className="font-semibold text-amber-500">Software Developer & Full Stack Engineer</span> with{" "}
+                <span className="font-bold bg-amber-500/10 px-2 py-0.5 rounded-md">2+ years</span> of experience building scalable web applications
+                and <span className="italic">intelligent automation solutions</span>.
               </p>
               <p className="text-lg md:text-xl leading-relaxed mt-3">
                 I specialize in{" "}
                 <span className="underline decoration-amber-500 decoration-2 underline-offset-2">
-                  Data Science and Data Analysis
+                  Full Stack Development
                 </span>{" "}
-                with a growing focus on <span className="font-semibold">Machine Learning</span> and{" "}
-                <span className="font-semibold">Artificial Intelligence</span>.
+                with a growing focus on <span className="font-semibold">n8n workflow automation</span> and{" "}
+                <span className="font-semibold">AI Agent development</span>.
               </p>
               <motion.p
                 initial={{ opacity: 0, y: 10 }}
@@ -179,7 +178,7 @@ export function HeroSection() {
                 transition={{ delay: 1, duration: 0.5 }}
                 className="text-lg md:text-xl leading-relaxed mt-3 bg-gradient-to-r from-amber-500/10 to-transparent px-3 py-2 border-l-2 border-amber-500"
               >
-                My work bridges the gap between data-driven decision-making and scalable software solutions.
+                My work bridges the gap between full-stack engineering and AI-powered automation, creating intelligent systems.
               </motion.p>
             </div>
           </motion.div>
@@ -243,21 +242,18 @@ export function HeroSection() {
             className="flex flex-wrap gap-2 pt-4"
           >
             <Badge variant="outline" className="bg-background/50 backdrop-blur-sm">
-              <Code className="h-3.5 w-3.5 mr-1" /> Data Science
+              <Code className="h-3.5 w-3.5 mr-1" /> React/Next.js
             </Badge>
             <Badge variant="outline" className="bg-background/50 backdrop-blur-sm">
-              <LineChart className="h-3.5 w-3.5 mr-1" /> Data Analysis
+              <Code className="h-3.5 w-3.5 mr-1" /> Fast API
             </Badge>
             <Badge variant="outline" className="bg-background/50 backdrop-blur-sm">
-              <Database className="h-3.5 w-3.5 mr-1" /> Database 
-            </Badge>
-            
-            <Badge variant="outline" className="bg-background/50 backdrop-blur-sm">
-              <Braces className="h-3.5 w-3.5 mr-1" /> ML
+              <Workflow className="h-3.5 w-3.5 mr-1" /> n8n
             </Badge>
             <Badge variant="outline" className="bg-background/50 backdrop-blur-sm">
-              <Globe className="h-3.5 w-3.5 mr-1" /> AI
+              <Bot className="h-3.5 w-3.5 mr-1" /> AI Agents
             </Badge>
+           
           </motion.div>
         </div>
 
@@ -283,7 +279,7 @@ export function HeroSection() {
               transition={{ delay: 1, duration: 0.5 }}
               className="absolute -bottom-4 -right-4 bg-background p-4 rounded-lg shadow-lg border border-border"
             >
-              <span className="text-lg font-bold text-amber-500">2+ Years Experience</span>
+              <span className="text-lg font-bold text-amber-500">1+ Years Experience</span>
             </motion.div>
 
             {/* Animated code terminal */}
@@ -291,7 +287,7 @@ export function HeroSection() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="absolute -left-16 -bottom-32 md:-left-32 md:-bottom-16 w-64 md:w-80 h-48 bg-gray-900 rounded-lg shadow-xl overflow-hidden border border-gray-700"
+              className="absolute -left-16 -bottom-32 md:-left-32 md:-bottom-16 w-64 md:w-80 h-52 bg-gray-900 rounded-lg shadow-xl overflow-hidden border border-gray-700"
             >
               <div className="h-6 bg-gray-800 flex items-center px-4">
                 <div className="flex space-x-1.5">
@@ -300,7 +296,7 @@ export function HeroSection() {
                   <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
                 </div>
                 <div className="ml-2 text-xs text-gray-400 flex items-center">
-                  <Terminal className="h-3 w-3 mr-1" /> profile.py
+                  <Terminal className="h-3 w-3 mr-1" /> developer_profile.py
                 </div>
               </div>
               <div className="p-4 font-mono text-xs text-green-400 overflow-hidden h-[calc(100%-1.5rem)]">
@@ -356,7 +352,7 @@ export function HeroSection() {
           className="flex flex-col items-center gap-2 text-muted-foreground hover:text-amber-500 transition-colors"
         >
           <div className="h-20 w-px bg-border"></div>
-          <span className="text-xs uppercase tracking-widest rotate-90 origin-center translate-y-6">Data Scientist</span>
+          <span className="text-xs uppercase tracking-widest rotate-90 origin-center translate-y-6">Full Stack + AI</span>
           <div className="h-20 w-px bg-border"></div>
         </Link>
       </motion.div>

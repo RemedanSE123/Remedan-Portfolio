@@ -6,267 +6,163 @@ import Image from "next/image"
 import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, ExternalLink, Star } from "lucide-react"
+import { ExternalLink, Star } from "lucide-react"
 
 const projects = [
   {
     id: 1,
-    title: "Ethiopia Interactive Map Explorer",
+    title: "Plant & Equipment Management System",
     description:
-       "An advanced web-based mapping tool that enables users to explore, customize, and export geographic data across all administrative levels of Ethiopia — from regions to zones and woredas.",
-    image: "/Project/et.png?height=400&width=600",
-    tags: ["Python", "Pandas", "PostgreSQL", "Excel", "React", "Node.js"],
-    link: "/projects/ethiopia",
+      "Enterprise-grade asset and operations management system developed for the Ethiopian Construction Works Corporation. The platform tracks heavy equipment status, manages project-level operations, and digitizes daily timesheet reporting across multiple construction sites, improving visibility, accountability, and operational efficiency.",
+    image: "/Project/pems.png",
+    link: "http://196.189.151.125:8085/",
+    tags: ["Next.js", "FastAPI", "PostgreSQL", "S3", "VPS", "SMTP"],
   },
   {
     id: 2,
-    title: "Digital Address Registration System",
+    title: "Cropin Grow Agricultural Intelligence Platform",
     description:
-      "Designed a national address registration system for Ethiopia that allows users to contribute verified location data, from region down to house number, with interactive mapping and approval workflow.",
-    image: "/Project/54.png?height=400&width=600",
-    tags: ["SQL", "Excel","Python","PHP"],
-    link: "/projects/address",
+      "Worked in collaboration with Cropin Grow and the Ministry of Agriculture to manage and analyze over 75,000 farmer profiles across 6 Ethiopian regions. The system enabled agricultural data collection, geospatial mapping, crop monitoring, and advisory optimization to improve farmer productivity and decision-making.",
+    image: "/Project/cropin.png",
+    link: "https://www.cropin.com/",
+    tags: ["Excel", "SQL", "NumPy", "Pandas", "Tableau", "Cropin APK"],
   },
   {
     id: 3,
-    title: "Data Jobs Dashboard 2.0",
-    description: "Created an interactive dashboard using Power BI, Excel, and SQL to analyze job counts, skills, and salaries in data-related roles.",
-    image: "/Project/48.png?height=400&width=600",
-    tags: ["SQL", "Excel","Python"],
-    link: "/projects/data2",
+    title: "National Agricultural GIS Mapping System",
+    description:
+      "Designed a multi-layer geospatial intelligence system for Ethiopia’s Ministry of Agriculture using Region, Zone, and Woreda structures. The platform visualizes land usage, crop distribution, pest outbreaks, climate conditions, and agricultural performance using advanced GIS analytics and spatial data processing.",
+    image: "/Project/moa map.png",
+    link: "https://map-eight-swart.vercel.app/",
+    tags: ["Shapefile", "PostGIS", "Next.js", "QGIS", "GeoJSON", "SQL"],
+  },
+  {
+    id: 4,
+    title: "BukariTech Corporate Digital Presence",
+    description:
+      "Developed a modern, high-performance corporate landing page for BukariTech, designed to showcase services, projects, and company identity. Focused on clean UI/UX design, responsiveness, branding consistency, and optimized performance for client acquisition.",
+    image: "/Project/bu.png",
+    link: "https://www.bukaritech.com/",
+    tags: ["Next.js", "shadcn/ui", "Figma"],
+  },
+  {
+    id: 5,
+    title: "ECWC Smart Bus Route & Tracking System",
+    description:
+      "Built an intelligent transportation system enabling users to view bus routes, schedules, driver information, and service availability. The platform supports offline route access and is currently evolving into a real-time GPS tracking system for live bus location monitoring and improved commuter experience.",
+    image: "/Project/ecwc bus r.png",
+    link: "https://ecwc-bus-route.vercel.app/",
+    tags: ["Next.js", "Leaflet", "API", "PostgreSQL"],
   },
 ]
-
 export function FeaturedProjects() {
   return (
-    <section className="container py-24 overflow-x-hidden relative" id="featured-projects">
-      <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16"
-      >
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-          <div className="h-1 w-20 bg-amber-500 mb-6"></div>
-          <p className="text-muted-foreground max-w-2xl">
-            A selection of my most impactful data science and machine learning projects that demonstrate my technical
-            skills and problem-solving abilities.
-          </p>
-        </div>
-        <Button asChild className="mt-4 md:mt-0 bg-amber-500 hover:bg-amber-600 text-black">
-          <Link href="/projects">
-            View All Projects <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
-        </Button>
-      </motion.div>
+    <section className="container py-24 relative" id="featured-projects">
+      <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none" />
 
-      <div className="absolute top-24 right-4 md:right-12 hidden md:flex items-center gap-2 text-muted-foreground">
-        <div className="flex items-center justify-center w-10 h-10 rounded-full border border-amber-500/30">
-          <span className="text-amber-500 font-mono">{projects.length}</span>
-        </div>
-        <span className="text-sm">Projects</span>
+      <div className="mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+        <div className="h-1 w-20 bg-amber-500 mb-6" />
+        <p className="text-muted-foreground max-w-2xl">
+          Real-world systems across agriculture, GIS mapping, enterprise asset management, and transportation.
+        </p>
       </div>
 
-      <div className="flex flex-col space-y-16">
+      <div className="flex flex-col space-y-20">
         {projects.map((project, index) => (
-          <div key={project.id}>
-            <ProjectItem project={project} index={index} />
-            {index < projects.length - 1 && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1 }}
-                className="flex justify-center"
-              >
-                <div className="h-8 w-px bg-gradient-to-b from-transparent via-amber-500/30 to-transparent"></div>
-              </motion.div>
-            )}
-          </div>
+          <ProjectItem key={project.id} project={project} index={index} />
         ))}
       </div>
     </section>
   )
 }
 
-// ProjectItem remains unchanged
 function ProjectItem({ project, index }: { project: any; index: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.3 })
-
   const isImageLeft = index % 2 === 0
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-        duration: 0.5,
-      },
-    },
-  }
-
   const itemVariants = {
-    hidden: (isImageLeft: boolean) => ({
-      x: isImageLeft ? -50 : 50,
+    hidden: (left: boolean) => ({
+      x: left ? -60 : 60,
       opacity: 0,
     }),
     visible: {
       x: 0,
       opacity: 1,
-      transition: {
-        duration: 0.7,
-        ease: [0.25, 0.1, 0.25, 1.0],
-      },
+      transition: { duration: 0.7 },
     },
   }
-
-  const decorativeElements = [
-    { top: "10%", left: isImageLeft ? "-5%" : "auto", right: isImageLeft ? "auto" : "-5%", size: "60px" },
-    { bottom: "10%", right: isImageLeft ? "-3%" : "auto", left: isImageLeft ? "auto" : "-3%", size: "40px" },
-  ]
 
   return (
     <motion.div
       ref={ref}
-      variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      className={`flex flex-col ${isImageLeft ? "lg:flex-row" : "lg:flex-row-reverse"} gap-8 lg:gap-16 items-center relative max-w-full`}
+      variants={itemVariants}
+      custom={isImageLeft}
+      className={`flex flex-col ${
+        isImageLeft ? "lg:flex-row" : "lg:flex-row-reverse"
+      } gap-10 items-center`}
     >
-      {decorativeElements.map((elem, i) => (
-        <motion.div
-          key={i}
-          className="hidden lg:block absolute rounded-full bg-amber-500/10 z-0"
-          style={{
-            top: elem.top || "auto",
-            left: elem.left || "auto",
-            right: elem.right || "auto",
-            bottom: elem.bottom || "auto",
-            width: elem.size,
-            height: elem.size,
-          }}
-          animate={{
-            y: [0, 10, 0],
-            opacity: [0.1, 0.2, 0.1],
-            scale: [1, 1.05, 1],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Number.POSITIVE_INFINITY,
-            delay: i * 2,
-          }}
-        />
-      ))}
+      {/* IMAGE (FIXED - NO CUTTING) */}
+      <div className="w-full lg:w-1/2">
+        <div className="relative w-full h-[300px] md:h-[420px] rounded-xl overflow-hidden group bg-black/5 flex items-center justify-center">
 
-      <motion.div
-        custom={isImageLeft}
-        variants={itemVariants}
-        className="w-full lg:w-1/2 max-w-[600px] rounded-xl shadow-2xl relative z-10"
-      >
-        <div className="relative w-full overflow-hidden rounded-xl group">
-          <div className="absolute top-4 right-4 z-20 bg-amber-500 text-black px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
+          <div className="absolute top-4 right-4 z-20 bg-amber-500 text-black px-3 py-1 rounded-full flex items-center gap-1">
             <Star className="h-4 w-4" />
             <span className="text-sm font-medium">Featured</span>
           </div>
 
-          <div className="relative w-full h-[300px] md:h-[400px]">
-            <Image
-              src={project.image || "/placeholder.svg"}
-              alt={project.title}
-              width={600}
-              height={400}
-              className="w-full h-full object-contain rounded-xl transition-transform duration-700 group-hover:scale-105"
-            />
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-contain p-4 transition-transform duration-700 group-hover:scale-105"
+          />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6 rounded-xl">
-              <div className="text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <h4 className="text-xl font-bold">{project.title}</h4>
-                <p className="text-white/80 mt-2 line-clamp-2">{project.description}</p>
-              </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-6">
+            <div className="text-white">
+              <h4 className="text-lg font-bold">{project.title}</h4>
+              <p className="text-sm text-white/80 line-clamp-2">
+                {project.description}
+              </p>
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
 
-      <motion.div
-        custom={!isImageLeft}
-        variants={itemVariants}
-        className="w-full lg:w-1/2 max-w-[600px] flex flex-col relative z-10"
-      >
+      {/* CONTENT */}
+      <div className="w-full lg:w-1/2">
+
+        {/* TECH STACK BACK ABOVE TITLE (FIXED) */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {project.tags.map((tag: string, i: number) => (
+          {project.tags.map((tag: string) => (
             <Badge
               key={tag}
               variant="outline"
-              className="bg-amber-500/10 text-amber-500 hover:bg-amber-500/20 border-amber-500/50 transition-all duration-300 hover:scale-105"
-              style={{ animationDelay: `${i * 100}ms` }}
+              className="bg-amber-500/10 text-amber-500"
             >
               {tag}
             </Badge>
           ))}
         </div>
 
-        <h3 className="text-2xl md:text-3xl font-bold mb-4 relative">
+        <h3 className="text-2xl md:text-3xl font-bold mb-4">
           {project.title}
-          <span className="absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-12 bg-amber-500/50 rounded-r-md hidden lg:block"></span>
         </h3>
 
-        <p className="text-muted-okinase text-lg mb-6">{project.description}</p>
+        <p className="text-muted-foreground mb-6">
+          {project.description}
+        </p>
 
-        <div className="mb-6">
-          <h4 className="text-sm uppercase tracking-wider text-muted-foreground mb-2">Tech Stack</h4>
-          <div className="flex flex-wrap gap-3">
-            {project.tags.map((tech: string) => (
-              <div key={tech} className="flex items-center gap-1.5">
-                <div className="w-2 h-2 rounded-full bg-amber-500"></div>
-                <span className="text-sm">{tech}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-       
-
-        <div className="flex flex-wrap gap-4 mt-auto">
-          <Button asChild className="bg-amber-500 hover:bg-amber-600 text-black relative overflow-hidden group">
-            <Link href={project.link}>
-              <span className="relative z-10 flex items-center">
-                View Details <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </span>
-              <span className="absolute inset-0 bg-amber-600 transform scale-x-0 origin-left transition-transform group-hover:scale-x-100"></span>
-            </Link>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="border-amber-500/50 hover:bg-amber-500/10 hover:text-amber-500 transition-all duration-300"
-          >
-            <Link href={project.link}>
-              <ExternalLink className="mr-2 h-4 w-4" /> Visit Project
-            </Link>
-          </Button>
-        </div>
-
-        <div className="hidden lg:flex items-center gap-2 mt-8">
-          <span className="text-sm text-muted-foreground">Project completion</span>
-          <div className="h-2 bg-muted rounded-full flex-1 max-w-[200px] overflow-hidden">
-            <motion.div
-              className="h-full bg-amber-500 rounded-full"
-              initial={{ width: 0 }}
-              animate={isInView ? { width: "100%" } : { width: 0 }}
-              transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-            />
-          </div>
-          <span className="text-sm font-medium">100%</span>
-        </div>
-
-     
-      </motion.div>
+        {/* LIVE DEMO ONLY */}
+        <Button asChild className="bg-amber-500 hover:bg-amber-600 text-black">
+          <Link href={project.link} target="_blank">
+            Live Demo <ExternalLink className="ml-2 h-4 w-4" />
+          </Link>
+        </Button>
+      </div>
     </motion.div>
   )
 }

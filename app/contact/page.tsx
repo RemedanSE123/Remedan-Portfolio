@@ -134,7 +134,7 @@ export default function ContactPage() {
 
 
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Let's discuss how we can work together on your next Data Analysis, Data Science or ML project.
+          Let's discuss how we can work together on your next Data project.
         </p>
       </div>
 

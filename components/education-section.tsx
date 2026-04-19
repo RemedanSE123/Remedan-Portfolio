@@ -10,17 +10,16 @@ const educationData = [
     id: 1,
     institution: "Adama Science and Technology University",
     degree: "B.Sc. in Software Engineering",
-    description:
-      "Built a strong foundation in software development, with emphasis on programming, system design, and advanced applications of data science, data analysis, machine learning, artificial intelligence, and statistical computing.",
-    skills: [
-      "Programming Languages: Java, Python, C++, R",
-      "Data Science & Statistical Modeling",
-      "Data Structures & Algorithms",
-      "Database Design & Management",
-      "Advanced Data Analysis & Visualization",
-      "Machine Learning & AI Techniques",
-      "Software Development Life Cycle",
-    ],
+   description:
+    "Built a strong foundation in software engineering with focus on backend development, full-stack web applications, system architecture, and practical AI integration using modern technologies.",
+  skills: [
+    "Software Architecture",
+    "Database Management & Design",
+    "Machine Learning & AI",
+    "Full-Stack Development",
+    "Programming Fundamentals ",
+    "Operating Systems & Linux Environments",
+  ],
     logo: "/adama.jpg?height=120&width=120",
     color: "#FCD34D", // amber-300
     icon: GraduationCap,
@@ -48,15 +47,16 @@ const educationData = [
     degree: "Continuous Learning",
     period: "Ongoing",
     description:
-      "Dedicated to advancing skills in data science, artificial intelligence (AI), machine learning, and advanced analytics through diverse online platforms.",
+    "Continuously improving my skills in full-stack development, AI-powered systems, and cloud infrastructure through hands-on projects and online learning platforms.",
   skills: [
-  "Artificial Intelligence (AI) & Machine Learning Algorithms",
-  "Advanced Data Analysis with Python (Pandas,  Scikit-learn)",
-  " Web Applications (React, Node.js, Express)",
-  "SQL & NoSQL Database Management (PostgreSQL, MongoDB)",
-  "Cloud Automation & Data Pipelines (AWS, Azure, GCP)",
-  "Interactive Dashboards & Reporting (Power BI, Tableau, Excel)",
-  "Web Scraping & Data Collection (BeautifulSoup, Selenium, APIs)",
+   "Full-Stack Development (Next.js, Node.js, Express, NestJS)",
+    "Backend APIs with Python (FastAPI)",
+    "AI & Automation Systems",
+    "Linux & VPS Server Deployment",
+    "Cloud Platforms (Azure, AWS S3, EC2, IAM)",
+    "Database & Backend Services (Supabase, Firebase)",
+    "Workflow Automation (n8n)",
+    "Data Collection Tools (KoboToolbox)",
 ],
 
     logo: "/ud.webp?height=120&width=120",

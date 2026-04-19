@@ -10,9 +10,11 @@ export function SiteFooter() {
               <Link href="/" className="text-2xl font-bold text-amber-500">
                 Remedan.H
               </Link>
-              <p className="mt-2 text-muted-foreground max-w-md">
-                Empowering decisions through data. I specialize in turning raw information into actionable insights, combining analytics, machine learning, and domain knowledge to solve real-world challenges.
-              </p>
+             <p className="mt-2 text-muted-foreground max-w-md">
+  Building modern software systems from idea to production. I specialize in full-stack development,
+  backend architecture, and integrating AI technologies such as LLMs and RAG to create intelligent,
+  scalable applications that solve real-world problems.
+</p>
             </div>
 
 

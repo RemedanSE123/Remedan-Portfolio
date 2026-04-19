@@ -87,7 +87,7 @@ export function SiteHeader() {
                 </Link>
               ))}
               <Button asChild className="mt-4 border-amber-500 text-amber-500 hover:bg-amber-500/10" variant="outline">
-                <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <Link href="https://github.com/RemedanSE123" target="_blank" rel="noopener noreferrer">
                   <Github className="mr-2 h-5 w-5" />
                   GitHub
                 </Link>
